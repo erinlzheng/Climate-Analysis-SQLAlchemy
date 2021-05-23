@@ -32,7 +32,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def welcome():
-    """Available API Routes for Surfs Up"""
     return (
         f"Available Routes:<br/>"
         f"/api/v1.0/precipitation<br/>"
@@ -43,7 +42,6 @@ def welcome():
 
 @app.route("/api/v1.0/precipitation")
 def precipitation():
-    """Last Year of Percipitation Data"""
     session = Session(engine)
    
     recent_date = session.query(Measurement.date).order_by(Measurement.date.desc()).first().date
@@ -58,7 +56,6 @@ def precipitation():
 
 @app.route("/api/v1.0/stations")
 def stations():
-    """List of Weather Stations"""
     session = Session(engine)
 
   
@@ -70,7 +67,6 @@ def stations():
 
 @app.route("/api/v1.0/tobs")
 def temp_monthly():
-    """Temperature Observations for Top Station for Last Year"""
     
     session = Session(engine)
     
