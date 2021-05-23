@@ -57,17 +57,12 @@ def precipitation():
 @app.route("/api/v1.0/stations")
 def stations():
     session = Session(engine)
-
-  
     stations = session.query(Station.station).all()
-
-    
     
     return jsonify(stations)
 
 @app.route("/api/v1.0/tobs")
 def temp_monthly():
-    
     session = Session(engine)
     
     recent_date = session.query(Measurement.date).order_by(Measurement.date.desc()).first().date
